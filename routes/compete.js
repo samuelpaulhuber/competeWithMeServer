@@ -43,8 +43,9 @@ router.post('/login', function(req, res, next){
   try {
     console.log(user.checkCredentials(req.body, function (err, rows) {
       console.log(err);
-      if (err)
-        res.status(500).send({ error: err });
+      if (err) {
+        res.status(500).send({error: err});
+      }
       else {
         if (rows.length > 0) {
           const uId = rows[0].id;
