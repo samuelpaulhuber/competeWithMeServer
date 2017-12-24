@@ -4,9 +4,9 @@ var Drill={
   getAllDrills:function(callback){
     return db.query("select * from Drills",callback);
   },
-  // getUserById:function(id,callback){
-  //   return db.query("select * from Users where id=?",[id],callback);
-  // },
+  getDrillById:function(id,callback){
+    return db.query("select * from Drills where id=?",id,callback);
+  },
   // addUser:function(user,callback){
   //   return db.query("insert into Users values(NULL,?,?,?)",[user.email,user.password,user.salt],callback);
   // },

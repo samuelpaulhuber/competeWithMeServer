@@ -42,7 +42,6 @@ const authCheck = (req, res, next) => {
 router.post('/login', function(req, res, next){
   try {
     console.log(user.checkCredentials(req.body, function (err, rows) {
-      console.log(err);
       if (err) {
         res.status(500).send({error: err});
       }
@@ -88,6 +87,17 @@ router.get('/getManufacturers', authCheck, function(req, res, next) {
 /* GET all drills. */
 router.post('/getDrills', authCheck, function(req, res, next) {
   console.log(drill.getAllDrills(function(err, rows){
+    if(err)
+      res.json(err);
+    else
+      res.json(rows);
+  }));
+});
+
+/* GET specific. */
+router.get('/getDrill', authCheck, function(req, res, next) {
+  var drillId = req.param('id');
+  console.log(drill.getDrillById(drillId, function(err, rows){
     if(err)
       res.json(err);
     else
