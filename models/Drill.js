@@ -7,15 +7,15 @@ var Drill={
   getDrillById:function(id,callback){
     return db.query("select * from Drills where id=?",id,callback);
   },
-  // addUser:function(user,callback){
-  //   return db.query("insert into Users values(NULL,?,?,?)",[user.email,user.password,user.salt],callback);
-  // },
-  // deleteUser:function(id,callback){
-  //   return db.query("delete from Users where id=?",[id],callback);
-  // },
-  // updateUser:function(id,email,callback){
-  //   return db.query("update Users set email=? where id=?",[email,id],callback);
-  // }
+  addDrill:function(drill,callback){
+    return db.query("insert into Drills values(NULL,?,?,?)",[drill.name,drill.image,drill.procedure],callback);
+  },
+  deleteDrill:function(drill,callback){
+    return db.query("delete from Drills where id=?",[drill.id],callback);
+  },
+  updateDrill:function(drill,callback){
+    return db.query("update Drills set `name`=?, image=?, `procedure`=? where id=?",[drill.name,drill.image,drill.procedure,drill.id],callback);
+  }
 
 };
 module.exports=Drill;
